@@ -110,6 +110,7 @@ class ProductsService {
         throw new Error(`Product with name '${name}' already exists`);
       product.name = name;
     }
+    if (price) product.price = price;
     if (category) {
       const mainCategory = await categoriesService.getOneById(category.id, {
         where: { subcategories: { id: category.subcategories } },
